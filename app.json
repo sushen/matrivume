@@ -1,0 +1,18 @@
+{
+  "addons": [
+    "heroku-postgresql"
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/python"
+    }
+  ],
+  "env": {
+  },
+  "formation": {
+  },
+  "name": "matrivume",
+  "scripts": {
+  },
+  "stack": "heroku-18"
+}
