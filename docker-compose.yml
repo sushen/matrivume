@@ -1,0 +1,29 @@
+version: "3"
+
+services:
+
+  my_db:
+    container_name: django_db
+    environment:
+      POSTGRES_DB: django_db
+      POSTGRES_USER: db_user
+      POSTGRES_PASSWORD: password
+    image: postgres
+    volumes:
+      - "./pgdata:/var/lib/postgresql/data"
+      - "./backup:/var/lib/postgresql/backup"
+    expose:
+      - 5432
+
+  app:
+      container_name: django_app
+      build:
+        context: .
+        dockerfile: ./Dockerfile
+      command: gunicorn matrivume.docker_wsgi --bind=0.0.0.0:8000 --access-logfile -
+      volumes:
+        - .:/code
+      ports:
+        - "8000:8000"
+      depends_on:
+        - my_db
