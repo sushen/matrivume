@@ -7,5 +7,6 @@ except ImportError as exc:
     ) from exc
 
 DEBUG = False
+WSGI_APPLICATION = 'matrivume.heroku_wsgi.application'
 
 django_heroku.settings(locals())

@@ -5,6 +5,8 @@ except ImportError as exc:
         "Couldn't import development settings from settings_module."
     ) from exc
 
+WSGI_APPLICATION = 'matrivume.docker_wsgi.application'
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
