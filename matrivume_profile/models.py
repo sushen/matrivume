@@ -1,0 +1,9 @@
+from django.db import models
+
+# Create your models here.
+
+'''
+class Identity(models.Model):
+    national_identity = models.CharField(max_length=255)
+    nationalty = models.
+'''

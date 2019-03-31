@@ -10,8 +10,8 @@ services:
       POSTGRES_PASSWORD: password
     image: postgres
     volumes:
-      - "./pgdata:/var/lib/postgresql/data"
-      - "./backup:/var/lib/postgresql/backup"
+      - "pgdata:/var/lib/postgresql/data"
+      - "backup:/var/lib/postgresql/backup"
     expose:
       - 5432
 
