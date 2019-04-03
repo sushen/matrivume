@@ -20,7 +20,8 @@ def user_registration_view(request):
             print(form.cleaned_data)
             username = form.cleaned_data['username']
             password = form.cleaned_data['password1']
-            User.objects.create_user(username=username, password=password)
+            user = User.objects.create_user(username=username, password=password)
+            models.Identity.objects.create(user_profile=user)
 
             return HttpResponseRedirect(reverse('matrivume_profile:login'))
 
@@ -53,7 +54,7 @@ def logout_view(request):
 
 @login_required()
 def profile_view(request):
-    profile_model = models.Identity.objects.filter(user=request.user).first()
+    profile_model = models.Identity.objects.filter(user_profile=request.user).first()
     context = {
         'profile': profile_model
     }
@@ -62,7 +63,7 @@ def profile_view(request):
 
 @login_required()
 def profile_update_view(request):
-    profile_model = models.Identity.objects.filter(user=request.user).first()
+    profile_model = models.Identity.objects.filter(user_profile=request.user).first()
     if request.method == 'POST':
         form = IdentityForm(data=request.POST)
 

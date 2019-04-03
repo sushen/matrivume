@@ -12,4 +12,4 @@ class IdentityForm(forms.ModelForm):
 
     class Meta:
         model = models.Identity
-        exclude = ('user', 'id')
+        exclude = ('user_profile', 'id')

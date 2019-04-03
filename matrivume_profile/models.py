@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth import get_user_model
+from django.dispatch import receiver
 
 User = get_user_model()
 
@@ -17,7 +18,7 @@ def user_directory_path(instance, filename):
 
 
 class Identity(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="identity")
+    user_profile = models.OneToOneField(User, on_delete=models.CASCADE, related_name="identity_user")
     birth_date = models.DateField(null=True, blank=True)
     '''
     weight = models.PositiveSmallIntegerField(null=True, blank=True)
@@ -38,7 +39,7 @@ class Identity(models.Model):
     '''
 
     github_profile_link = models.URLField(null=True, blank=True)
-    bio = models.TextField()
+    bio = models.TextField(default="No bio")
     # profile_picture = models.ImageField(upload_to='') when we make login system we will make it
 
     # cell_phone_imei_code = models.CharField(max_length=50, null=True, blank=True)
@@ -47,11 +48,4 @@ class Identity(models.Model):
     # address = we are going use the google's maps API :)
 
     def __str__(self):
-        return self.user.username
-
-
-def save_profile_identity(sender, instance, **kwargs):
-    Identity.objects.create(user=instance)
-
-
-models.signals.post_save.connect(save_profile_identity, sender=User)
+        return self.user_profile.username

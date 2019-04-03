@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block title %}Profile{% endblock %}
 {% block content %}
-{{ profile.user }}
+{{ profile.user_profile }}
 <a href="{{ profile.github_profile_link }}">Github</a>
 {% if form %}
 <form action="{% url 'matrivume_profile:profile_update_view' %}" method="post">
