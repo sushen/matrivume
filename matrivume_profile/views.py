@@ -21,7 +21,8 @@ def user_registration_view(request):
             username = form.cleaned_data['username']
             password = form.cleaned_data['password1']
             user = User.objects.create_user(username=username, password=password)
-            models.Identity.objects.create(user_profile=user)
+            identity = models.Identity.objects.create(user_profile=user)
+            identity.save()
 
             return HttpResponseRedirect(reverse('matrivume_profile:login'))
 
