@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}Profile{% endblock %}
+{% block content %}
+{{ profile.user }}
+<a href="{{ profile.github_profile_link }}">Github</a>
+{% if form %}
+<form action="{% url 'matrivume_profile:profile_update_view' %}" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Submit">
+    </form>
+{% endif %}
+{% endblock %}
