@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Matrivumi V-1.0</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <style>
+        a {
+            text-decoration: none;
+        }
+
+        .bg-color {
+            background: #767878;
+        }
+
+        .front-color a {
+            text-decoration: none;
+            color: #ffffff;
+            font-size: 20px;
+            list-style-type: none;
+        }
+
+        .search-box {
+            margin-left: 530px;
+
+        }
+
+        .card {
+            padding-top: 20px;
+            margin: 10px 0 20px 0;
+            background-color: rgba(214, 224, 226, 0.2);
+            border-top-width: 0;
+            border-bottom-width: 2px;
+            -webkit-border-radius: 3px;
+            -moz-border-radius: 3px;
+            border-radius: 3px;
+            -webkit-box-shadow: none;
+            -moz-box-shadow: none;
+            box-shadow: none;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+        .card .card-heading {
+            padding: 0 20px;
+            margin: 0;
+        }
+
+        .card .card-heading.simple {
+            font-size: 20px;
+            font-weight: 300;
+            color: #777;
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        .card .card-heading.image img {
+            width: 204px;
+            height: 232px;
+            /* max-width: 100px;
+            max-height: 100px; */
+            -webkit-border-radius: 50%;
+            -moz-border-radius: 50%;
+            border-radius: 50%;
+            border: 5px solid rgba(255, 255, 255, 0.5);
+            margin-top: -56px;
+
+        }
+
+        .card .card-heading.image .card-heading-header {
+            display: inline-block;
+            vertical-align: top;
+        }
+
+        .card .card-heading.image .card-heading-header h3 {
+            margin: 0;
+            font-size: 14px;
+            line-height: 16px;
+            color: #262626;
+        }
+
+        .card .card-heading.image .card-heading-header span {
+            font-size: 12px;
+            color: #999999;
+        }
+
+        .card .card-body {
+            padding: 0 20px;
+            margin-top: 20px;
+        }
+
+        .card .card-media {
+            padding: 0 20px;
+            margin: 0 -14px;
+        }
+
+        .card .card-media img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        .card .card-actions {
+            min-height: 30px;
+            padding: 0 20px 20px 20px;
+            margin: 20px 0 0 0;
+        }
+
+        .card .card-comments {
+            padding: 20px;
+            margin: 0;
+            background-color: #f8f8f8;
+        }
+
+        .card .card-comments .comments-collapse-toggle {
+            padding: 0;
+            margin: 0 20px 12px 20px;
+        }
+
+        .card .card-comments .comments-collapse-toggle a,
+        .card .card-comments .comments-collapse-toggle span {
+            padding-right: 5px;
+            overflow: hidden;
+            font-size: 12px;
+            color: #999;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .card-comments .media-heading {
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .card.people {
+            position: relative;
+            display: inline-block;
+            width: 170px;
+            height: 300px;
+            padding-top: 0;
+            margin-left: 20px;
+            overflow: hidden;
+            vertical-align: top;
+        }
+
+        .card.people:first-child {
+            margin-left: 0;
+        }
+
+        .card.people .card-top {
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: inline-block;
+            width: 170px;
+            height: 150px;
+            background-color: #ffffff;
+        }
+
+        .card.people .card-top.green {
+            background-color: #53a93f;
+        }
+
+        .card.people .card-top.blue {
+            background-color: #427fed;
+        }
+
+        .card.people .card-info {
+            position: absolute;
+            top: 150px;
+            display: inline-block;
+            width: 100%;
+            height: 101px;
+            overflow: hidden;
+            background: #ffffff;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+        .card.people .card-info .title {
+            display: block;
+            margin: 8px 14px 0 14px;
+            overflow: hidden;
+            font-size: 16px;
+            font-weight: bold;
+            line-height: 18px;
+            color: #404040;
+        }
+
+        .card.people .card-info .desc {
+            display: block;
+            margin: 8px 14px 0 14px;
+            overflow: hidden;
+            font-size: 12px;
+            line-height: 16px;
+            color: #737373;
+            text-overflow: ellipsis;
+        }
+
+        .card.people .card-bottom {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            display: inline-block;
+            width: 100%;
+            padding: 10px 20px;
+            line-height: 29px;
+            text-align: center;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+        .card.hovercard {
+            position: relative;
+            padding-top: 0;
+            overflow: hidden;
+            text-align: center;
+            background-color: rgba(214, 224, 226, 0.2);
+        }
+
+        .card.hovercard .cardheader {
+
+            background-size: cover;
+            height: 135px;
+        }
+
+        .card.hovercard .avatar {
+            position: relative;
+            top: -50px;
+            margin-bottom: -50px;
+        }
+
+        .card.hovercard .avatar img {
+            width: 204px;
+            height: 232px;
+            /* max-width: 100px;
+            max-height: 100px; */
+            -webkit-border-radius: 50%;
+            -moz-border-radius: 50%;
+            border-radius: 50%;
+            margin-top: -56px;
+            border: 5px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .card.hovercard .info {
+            padding: 4px 8px 10px;
+        }
+
+        .card.hovercard .info .title {
+            margin-bottom: 4px;
+            font-size: 24px;
+            line-height: 1;
+            color: #262626;
+            vertical-align: middle;
+        }
+
+        .card.hovercard .info .desc {
+            overflow: hidden;
+            font-size: 12px;
+            line-height: 20px;
+            color: #737373;
+            text-overflow: ellipsis;
+        }
+
+        .card.hovercard .bottom {
+            padding: 0 20px;
+            margin-bottom: 17px;
+        }
+
+        .btn {
+            border-radius: 50%;
+
+            width: 37px;
+
+            height: 36px;
+
+            line-height: 29px;
+
+            font-size: 20px;
+
+            background: gray;
+
+            border: none;
+
+            color: whitesmoke;
+        }
+
+        /* main boding */
+        .blocking {
+            display: block;
+            border: 1.5px dashed gainsboro;
+            border-radius: 9px;
+            justify-content: center;
+        }
+
+        .blocking a {
+            color: gray;
+            opacity: 0.5;
+        }
+
+        .blocking a:hover {
+
+            text-decoration: none;
+            opacity: 1.0;
+            color: #FA9A9A;
+            font-size: 14px;
+            transition: ease-in-out;
+            transition-duration: 0s;
+            transition-duration: 0.5s;
+
+        }
+
+        .btn {
+
+            border-radius: 50%;
+            width: 37px;
+            height: 36px;
+            line-height: 29px;
+            font-size: 20px;
+
+        }
+
+        .search_input {
+
+            border-radius: 75px;
+
+            text-align: center;
+            font-size: 16px;
+
+        }
+
+        /* custom bootstrap min css */
+        .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+
+            color: #fff;
+            background-color: #898282;
+            font-size: 16px;
+            font-weight: bold;
+
+        }
+    </style>
+
+</head>
+<body>
+
+<!-- This is for header -->
+<header>
+
+    <div class="container-fluid ">
+        <nav class="navbar navbar-expand-sm  bg-color front-color">
+
+            <!-- Links -->
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Create</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">View</a>
+                </li>
+
+                <!-- Dropdown -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                        Features
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#">Link 1</a>
+                        <a class="dropdown-item" href="#">Link 2</a>
+                        <a class="dropdown-item" href="#">Link 3</a>
+                    </div>
+                </li>
+                <form class="form-inline navbar-toggler-right search-box" action="#">
+                    <input class="form-control mr-sm-2 search_input" style="width:354px;" type="text"
+                           placeholder="Search">
+                    <button class="btn btn-success" style="background:black;" type="submit"><strong>S</strong></button>
+                </form>
+            </ul>
+        </nav>
+
+    </div>
+
+</header>
+
+<!-- This is the body part -->
+<div class="container">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-sm-6">
+
+                <div class="card hovercard">
+                    <div class="cardheader">
+
+                    </div>
+                    <div class="avatar">
+                        <img alt=""
+                             src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxISEhIQEhIVEBUVFRIVFRUVEBAPEA8VFRUWFhUVFRUYHSggGBolGxUVITEhJSkrLi4uFx8zODMtNygtLisBCgoKDQcNGg8PGisZFRkrKysrKys3KysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrK//AABEIALcBFAMBIgACEQEDEQH/xAAcAAABBAMBAAAAAAAAAAAAAAAAAwQFBgECBwj/xABEEAABAwIDBAcEBwQJBQAAAAABAAIDBBEFEiEGMUFRBxMiYXGBkTKhscE0QlJyc7PRFCMz4RUWJCViY6Oy8DVDU4KS/8QAFAEBAAAAAAAAAAAAAAAAAAAAAP/EABQRAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhEDEQA/AOO4/wDSqn8eb8xy7J0JYTaE1TgLvBazs2cGBxBJPG59zQuSVlE6fEJYGe1JUyNHDfIQvTWEYa2niiiYLNYwMHkgmIDxTgPTSLclg8IFs6zmSPWjmsiUc0C2ZbBySDgsoFw5F0hdZzoFXJMMsbjT4FZD1sEGzXLa60stSbb/ANQgVKwVqHrDn+SDV/zCUWjddeHxW6DCwVssFBoUhUsuE4Wrwghy1bw7rJaaHW6RtYhAo3iFCbXUYmppoyL5mOHPeFMPNrFI1jbsI7kHkRzbEg8NFhSO0dP1dVUM5SP95v8ANRyAQhCAQhCAQhCAQhCDqHRvQxyYtVyO1dFJMWC2gLpHNJ8QPiV2uWcC19y5N0Wx/wBtxN/+a4X1v/EkPhyV7xutyMcb24IN8b2pZA0m+5c+relh2ZzWxnS4vcBQm0VaXE6k795N1SJD2j4n4oL9L0n1J9kNGnG+pW1N0n1QtmAOp3Ehc+ZqnUUDjuCDqFJ0syCwdHmGl7HUc1YaDpWp3Gzw5neW3HuXGo6F3IpT9lI4IPSGFbT084vHI13gRcKWbMDuK8vQOfGQ5jnMI4glpVxwHpBqIrNm/et57n/zQdwzpWKVVLA9qYqhoLXDvG4jxCsEM4PFBLtddbWTSJ6Xa9BlzAeC1bC0cEpZFkGEIQgwsFbLUoNbrK1K2CBKZuij5x7lJkJpVRoGrtUSt0K2jat5W6FB5c6Q4cmIVI5uB9WhVxXHpXZbEZdb3aw+GipyAQhCAQhCAQhCAQhCDsfRtKBUYkLa/tDyTfeM79Lf83qc2mqSI/HzVH2JxAR4jXMJt1j5rDmWyO+RKs200/Zt3aoKHiUpJJ71V3HtHxPxVlq93NV7qrvc3vQTWCYaH6nVXTDsLYLdkKC2XZw5K80kOgQZpsOZyHonv9DRO3safILMQTuKSyCIqdk4Xbhl8FB1exTx7BB8dCr42VLMIQcuGC1UBzNDmkcWq2bO7VvaQycFp3ZtzT+itTYQUlPhMbxZzAfIIJ7D8Qa8Ag3Ukx91RocJkh1gfYD6jtW+vBS1BjouGSAxu3WO4nuPFBaWvSrXpjDOCnAQLoSYctroMlYKFgoE3LLStXrZiDZJvbolVq5BHgWKzLuKWmbuKSl3FB5o6Wj/AHjJ91nzVNVv6VT/AHjN4N+CqCAQhCAQhCAQhCAQhCCwftPV4m9/KplHrI5vzV3x6cn0XOMeNqqpI/8APN+Y5XWOo66Jj+bRfx4oIeodwUUI/wB80/a0Vkw/DMxOc31Oi2xXA8rQ9v1SCge4JBlIKulLuCgMPg7LT3BTVPLwCBd8trpI1T+AFue9bljRv18UwrMQjZvNkErDXniQfAFOYq4c1SptooRx87Gyd4djEclsrhrw3H0QXqmqbqUiN1VcOqL6KyUjtEDwNSNTTNcLEApy0LErdEFedVzUpuwdazi0ntNHcrFg20EM4s14zcWnRw8lDYhpdU3Gqfq/7Qwljmm4tcEkckHZWuWy4hs70yZH9VVsOUGwkYM1vvN4+S6zg+PQVLA+GVkrebXB1jyPIoJcOWSkQ5ZDrICRbMWjnLZiBRalbBYQIzbkzJ0KeyBMpBYnvQebOluMjEZO9rCPeqYuj9N1LlrGP+0y3oVzhAIQhAIQhAIQhAIQhBIbQfSqn8eb8xyktlMRId1Djo7Vv3uSjdoPpVT+PN+Y5O9jaTrayBnDNc+ABKC11lNIz97GdeI4FPsNxTrWlr2ZTuOlwpvFMNLbgC992iZ4bBY2c0B25w7+aCQoILtACcMjy6JbCmDcptuG59yCqVkjrWGnfyChoMFkrHlrSWRN9p9+05dL/q6CO1ZZp6VsNwGaHusCg4DjFEyJz+0ZMpOoc7Kddw/VJUs1z+5cey1pv2g25GZzbHiDcX7le9qNlXda58AEkbyXFlwHMcd+/eElguxFQ4WLGxMLtbkF1uJFv1QTOyollhZI9pa6wI5PGouPQq+YYLgIw7DQxrGAANY3I1oG4abz5J/TU9igcxxLSePRPIwkalBAVNPmcAkJcGbJK1rx2WtzW4Ek6fD3qWYztXT3qQ7W1/ig4Ft1seIJn3blDy5zHDcQTf5qAoTVURbJSynO42IaPa+zcceK9G4jhUUoyyMDxycAQo7+rcA1azKebcoPqAgg9lOkF5yw1sZhksD1liI3c7je34LoMdQHAEG4581Bz4TG8ZSxtvDVMqemlpT2CZY76s+u37vDyQW3MlGOUXRVzZBcHxHFvcRwKdtegftKyU3ikThAk8JpU7r96euCaVG4oOMdPVH2aeYfaLT5i/yXHF6I6W6LrcNkdbWOzx3WOvuXndAIQhAIQhAIQhAIQhBIbQfSqn8eb8xytfRDQ56p8p3Rs8ruP8lVNoPpVT+PN+Y5dT6HqLLTPlO+R59G6fqgvJiBKqG0TTFKJBz171eqeO5uqjtg32vBAphcwLgRuNirnhz9AFyzZys1yk7jp4LpWESXAQTT3WCaPN07LbrTqUDAxeHolYYU9bAlmR2QJMZYLeFq2kREgXakZ0sCk5Qgj3DVOqeRNZXWKWgcCgfZAUmadKsSoCBp1CSkiT9wTaVBDVNKAc7ey7nwd3EcUpSV4dodHDePmFvVlVrEpbHMNC3UH5eCC4RSp/FLdUfAtpI5rtvle02c0nUH5hWanqL8UEm9yaSv0KyJ+CQmf5oIPaWk66iqYhvdHIB6Gy8tOFjY6EL142HsuB4heWNq6Pqaypi5Svt4E3HxQRKEIQCEIQCEIQCEIQSG0H0qp/Hm/Mcu67FUfVUUDNxyAnxOpXFKun6zEJI9+aqePIym69A07MrWtHAAIJSkb2SVTtrRfMO5XaEWaqVtY7eUFHhJjlY7hcX8F1DA57gLmtXHdoKuGy1bdjb8rHxGhQdCgdonDVG0cuieskQOQFhxWgetJHoE5n8FvTHUhMKuS3a5b03nxEN7V0FiC1k3KvUePteLgg+BBWtdjrWtJzAAcSdAgeVh7Q8VrHPZwHNV1m00Dt7/AHFSOGVYmfdurW8eF+5BZYpk5ZIo0FKNlQPnOTeZyx1qRlkQMa16p+OVFgVY8RnsCqJtBU6HzQc8r8dkinc6E5XNd7XPutyXVtittWVLAHdiQWzNJ945hcSqhme53Mk+9FJO+J7XsJY4HQhB6ljqcw3rDZLuA71zHYrbQzWil0eOO4O7wuhU8+axCCcPHwXnDpep8mIyH7TWu+I+S9Gwvvr3Lz702uH9IAcom38yf0Qc+QhCAQhCAQhCAQhCC67NUvWYy/jlnqHej3D5rtUQu4Bcs2Ap74nWyfZfMPWR36LqdGe2gl5dG2VH2tPZcrhVyaKl7Ufw3HvQVt7OwPBK7OVWR5Z33HzQfZHgotzyx4cN4PqEHVcOrbgKWjqVQsOr7WU5BXoLQJ1jrrqBFb3rV2IAcUE3IMwIUFUbMdaSHSOyfZ4+F0vTYo0nepSCsbzQVV2wwYbwyOi52NwfEJWh2QOYGaR0oG4H2b94VpkxGMb3Aea1/paGxOduneECbMEh0/dt/wDkJ3FC1gs0Bo7gAFB1e29EzR1RED+I1Rsu3tIdGSiQ8o7yH0aCgtUstkzNbYquyYzLKP3bC0c36e7f8Fsygmtm6y54jLYeSCztrLpKerUTTuNtUnVz2QJYrV6FUjG5S4Fo3nQealsTrFX6STrJ2jeAUENPszKG5st/BQ09I5uhFl6ApKJpYARwULjOyUUtyBY9yDi9NK6Nwe02INwV1nYzaxsrQx5yvG8X396p+ObJSQ3IGYeChaAmKVjiNzhcIPSlDKC24XAOmj/qJP8Als+Ll1/A6wFjbHQ+5c96cMM/gVQ743eerT8fVByZCEIBCEIBCEIBCEIOx9H0Fpq+TnUSj0eVd6E9oqs7IQZG1J+1UVB/1HKwUD+KCQq330VT2ufZgHMhWcvuqVtjPdzW96BvDF2QnVBgmbtkeCcYLSGSw4cVdIaMBtkFCqoCzdwW9JVKT2jpMuvBVZtVlKC2wvvxWXUIkNiTbuNlDUdcp2jnugRk2ej4F7TzEjwfikXYU4adbIP/AG/krFC4ELMlNxCCrO2ea/R8kjh3yOA9yVZsZTkWyAjlncpmSN4+qsNdMNzR6kfJBCN2KpG/9iIW5tBKdxYXHHo1rQO5oCfubO7g0epQyhkPtEDwCBKFlyApaPQLSGmDQkauqA4oE6p2XVV/FMQAvqsYxjTQDqqPiWKOebDQIFcVxHMS0eZ5KR2OpLyZlXaaIuNl07ZHC8jQSEFpp22AWzluNySeUDGtpmuBBF1SNodnYyHPaLFXuYqHxAAghAy2bqLRsueATrb2h/aMPmba5a3O3nduqhsBk9uPixx9CrXQPDmljtQRY+aDzQhTG1uGfs1XNDuAcS37rtQodAIQhAIQhAIQhB37Chlik75Zj/qOT6h1ATOIZYnffk97ylsPfvQSErwASqHjLjJO1o11VtxGezbKv4HT9ZUl53N+KC54DRZGhTrQmlILBOroI/FqMSNIXLMeonRPII04LsL1X8dwlszSCNUHK4K5zTzCncOxsaC/yUVjGDvicQRpzUVchB1HD8VB4qw0tSHLjFPiD26gqy4PtQBYOOU9+71QdRjYClhG1VqhxtrhvT44o3mgljlSMpAUS7FRzUfiGOtaDc280D/Eq4NB1XPcf2l1LWG5+CY7Q7SukJaw6c/0VbbcoHk1S5+pJK0ZHfglKSkc82AJV2wDZm1nPCBvstgJJD3BdCpog0AJKlpw0WAsnF0CmZJSOWHPTWolQJVM1lGSuvqtK2YkhoWRuQREUeSpDuDhYqyR9kg8Cq3ismQtePqkKw08nWRg9yCkdMOD5mx1jBu7D7DhwJXKl6ImgbPE+CQXDgQVwfHsMdTTyQO+qdD9pvAoI9CEIBCEIBCEIPQVb2Yj953+4rNBozxW2OCwI/xH/cUgJLNACBrikyNkxo53NxUbjU2hTzZmW0bUF5glS4lURFOnDZ0D8yJJzrpt1yx1iBGuomyAggFUrGdlSLuj9FfQ5aPaCEHGqikcw2Ismzl1fEsJZINQqVjGzzmXLdQgg6bEJI/ZcR3bwnv9ZJrcPeouSIjekS1BLPx+Y8UyqK17/acT8E3yrdkaDVsd1NYPgrpSNLBbYPhJkI00V/wyibGALINMIwRkYGmqm2WCRz2WBIgdZ0GRNusSb5kC8kqjqyosieoUBi1fYHVA4gmu4lOjIq7QVVx4qVjlug1xBmZpCebK1l2ZXb26JpKoyiq+pqNfZf8AFBb6uzHBzdx39ypfSfgfXRCqYLuYO1b6zf5K6uDXtTWmeCHRP1Go8Qg8+oUxtXhJpal8drNvmZ90qHQCEIQCEIQegdpH7x/jPxTNruysoQVjaCa1hzUjgMtmAIQgscE6ctmWUINxKt2yLKECjZFsJEIQaucm08QKwhBXcVwFj7kCxVcn2feDpY+aEING4DJ3eqk8P2e1BcVhCC0UVM1gsAnnWLKEGplWBIsoQYMySkmQhBHVc6qWPz3HmsIQbYZJoFOwSLKECrnqMxSG4uN41CEIJ7Z2qzxjnuKeVkeVwcEIQU/pQw3rIWVLbXj0dzLSuWoQgEIQgEIQg//Z">
+                    </div>
+                    <div class="info">
+                        <div class="title">
+                            <a target="_blank" href="#" style="color:black;text-decoration: none;">Daniel Johnson</a>
+                        </div>
+
+                        <div class="desc">Author & Photographer</div>
+                        <div class="desc">Life is nothing but a sequences of changing state</div>
+                    </div>
+                    <div class="bottom">
+                        <a class="btn btn-primary btn-twitter btn-sm" href="#">
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                        <a class="btn btn-danger btn-sm" rel="publisher"
+                           href="#">
+                            <i class="fa fa-google-plus"></i>
+                        </a>
+                        <a class="btn btn-primary btn-sm" rel="publisher"
+                           href="#">
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                        <a class="btn btn-warning btn-sm" rel="publisher" href="#">
+                            <i class="fa fa-behance"></i>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-lg-9 col-sm-9" style="margin-top:10px;">
+
+                <ul class="nav nav-tabs nav nav-pills nav-justified">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Popular Post</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">MyBlog</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Ancestor</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Follower</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Following</a>
+                    </li>
+
+
+                </ul>
+
+                <div class="container" style="margin-top:10px;">
+                    <h3 style="font-weight:bold;font-style: italic;"> Popular Posts : </h3>
+                    <div class="row" style="margin-top:18px">
+
+                        <div class="col-md-6 blocking">
+
+                            <h3 class="head-title">Matrivumi</h3>
+                            <p class="head-p">Ei j amar matrivumi ei j amar desh ei deshe te jonmo niye valo lage
+                                besh</p>
+                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eveniet facilis architecto nam
+                                quisquam ea maxime, quaerat nesciunt cum eum molestiae, assumenda dolor molestias
+                                maiores. Eum dignissimos quae voluptates mollitia iure!</p>
+                            <a href="#" class="head-a">Read More</a>
+
+                        </div>
+                        <div class="col-md-6 blocking">
+                            <h3 class="head-title">Matrivumi</h3>
+                            <p class="head-p">Ei j amar matrivumi ei j amar desh ei deshe te jonmo niye valo lage
+                                besh</p>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores quae rem laborum ipsum
+                                dolorem soluta voluptates quisquam quod quidem pariatur nihil veritatis totam, molestias
+                                aliquam aliquid aperiam, quia non! Molestias.</p>
+                            <a href="#" class="head-a">Read More</a>
+
+                        </div>
+
+                    </div>
+                    <div class="row" style="margin-top:18px">
+
+                        <div class="col-md-6 blocking">
+
+                            <h3 class="head-title">Matrivumi</h3>
+                            <p class="head-p">Ei j amar matrivumi ei j amar desh ei deshe te jonmo niye valo lage
+                                besh</p>
+                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eveniet facilis architecto nam
+                                quisquam ea maxime, quaerat nesciunt cum eum molestiae, assumenda dolor molestias
+                                maiores. Eum dignissimos quae voluptates mollitia iure!</p>
+                            <a href="#" class="head-a">Read More</a>
+
+                        </div>
+                        <div class="col-md-6 blocking">
+                            <h2 class="head-title">Matrivumi</h2>
+                            <p class="head-p">Ei j amar matrivumi ei j amar desh ei deshe te jonmo niye valo lage
+                                besh</p>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores quae rem laborum ipsum
+                                dolorem soluta voluptates quisquam quod quidem pariatur nihil veritatis totam, molestias
+                                aliquam aliquid aperiam, quia non! Molestias.</p>
+                            <a href="#" class="head-a">Read More</a>
+
+                        </div>
+
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- end of body -->
+</body>
+</html>
